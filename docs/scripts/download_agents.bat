@@ -1,6 +1,6 @@
 @echo off
 setlocal
-set "URL=https://raw.githubusercontent.com/jm-observer/workspace-system-prompt/main/mcp-tool/AGENTS.md"
+set "URL=https://raw.githubusercontent.com/jm-observer/tool-template-rust/blob/main/AGENTS.md"
 set "TARGET=%~dp0..\..\AGENTS.md"
 rem Download to target file in parent directory
 powershell -Command "Invoke-WebRequest -Uri \"%URL%\" -OutFile \"%TARGET%\" -ErrorAction Stop"
