@@ -26,6 +26,7 @@ Rust 异步应用程序。<!-- 补充具体业务功能描述 -->
 ## 代码质量
 
 **格式**：遵循 `rustfmt.toml`（120 列，4 空格缩进）和 `clippy.toml` 阈值。
+- **文档编码规范**：所有文档文件统一使用 UTF-8 编码，并将换行符统一为 LF 格式
 
 **错误处理**：
 - `lib.rs` 及子模块：禁止 `.unwrap()` / `.expect()`，使用 `?` 传播错误，返回 `anyhow::Result` 或 `thiserror` 自定义错误类型
@@ -136,3 +137,19 @@ docs/
 ## CI / 发布
 - 构建目标：`x86_64-pc-windows-msvc`、`aarch64-unknown-linux-gnu`
 - 推送 `v*` 标签触发 Release；推送前本地确认修复流程全部通过
+
+## 其他
+- Continue executing your next steps by calling the appropriate tools now.
+- Do not describe what you will do - just call the tools directly.
+- IMPORTANT: After a tool call returns success, proceed to the next step immediately.
+  Never call the same tool with identical arguments more than once.
+  If "Edit applied successfully" is returned, the edit is done - move on.
+- **文件变更请求必须落地执行**：当用户明确要求“修改 / 补充 / 更新 / 新增 / 删除”文件内容时，必须实际调用可用工具完成操作，不能只用自然语言描述方案或拟议改动
+- **先读取再修改**：如果请求中引用了文档、目录或文件，先读取相关内容，再继续修改
+- **不得过早结束**：只要还有明显必要的后续工具调用，就不能提前输出最终文本答复
+- **单次写入不代表完成**：一次 edit / write 完成后，如请求语义或项目规则要求继续检查、补充修改、验证或读取相关文件，必须继续执行
+- **仅在以下情况下停止**：请求已经实际完成；或缺少无法推断的关键信息；或工具报错导致无法继续
+- **简洁回答仅约束汇报**：“简洁回答”只约束最终说明长度，不代表可以跳过工具调用或跳过后续必要步骤
+- **优先产出实际变更**：对于配置修改、代码修改、文档落地类任务，优先完成实际变更，再用极简文本汇报结果
+- **未调用工具则任务未完成**：如果已经判断应该改文件，却没有调用任何工具，说明任务仍未完成，必须继续执行
+- **输出顺序要求**：先做事，后汇报；禁止把“我已修改 / 我会修改 / 建议修改为”视为完成，文件变更请求只有在实际产生工具调用并完成变更后才算完成
